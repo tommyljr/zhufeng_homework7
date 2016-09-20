@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>修改信息</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="angular-csp.css">
+</head>
+
+<body ng-controller="first">
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Option</th>
+            </tr>
+        </thead>
+        <tbody ng-cloak>
+        <tr ng-repeat="user in users track by user.id">
+            <td>{{user.id}}</td>
+            <td>
+                <p ng-show="user != changeUser">{{user.name}}</p>
+                <input type="text" ng-model="changeUser.name" ng-show="user == changeUser">
+            </td>
+            <td>
+                <p  ng-show="user != changeUser">{{user.age}}</p>
+                <input type="text" ng-model="changeUser.age" ng-show="user == changeUser">
+            </td>
+            <td>
+                <button class="btn btn-primary" ng-click="change(user)" ng-show="changeUser==null">Change</button>
+                <button class="btn btn-primary" ng-click="save(changeUser)" ng-show="user == changeUser">Save</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="angular.js"></script>
+<script src="index.js"></script>
+
+</body>
+</html>
